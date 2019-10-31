@@ -1,5 +1,5 @@
+#include<stdio.h>
 #include <stdlib.h>
-#include <stdio.h>
 typedef struct tnode
 {
     int data;
@@ -8,13 +8,12 @@ typedef struct tnode
  
 TNODE *CreateBST(TNODE *, int);
 void Postorder(TNODE *);
-int main()
+void main()
 {
-    TNODE *root=NULL;		 /* Main Program */
+    TNODE *root=NULL;		
     int opn,elem,n,i;
     do
     {
-        printf("\n ### Binary Search Tree Operations ### \n\n");
         printf("\n Press 1-Creation of BST");
         printf("\n       2-Traverse in Postorder");
         printf("\n       3-Exit\n");
@@ -33,16 +32,21 @@ int main()
             }
             printf("\nBST with %d nodes is ready to Use!!\n",n);
             break;
-        case 2:
+        
+        case 2: 
 if(root==NULL)
-printf("empty tree\n");
+printf("Empty tree\n");
 else
- printf("\n BST Traversal in POSTORDER \n");
-            Postorder(root); break;
+{
+printf("\n BST Traversal in POSTORDER \n");
+            Postorder(root); 
+}
+break;
         case 3: printf("\n\n Terminating \n\n"); break;
         default: printf("\n\nInvalid Option !!! Try Again !! \n\n");
             break;
         }
+       
     }while(opn != 3);
 }
 TNODE *CreateBST(TNODE *root, int elem)
@@ -59,12 +63,14 @@ TNODE *CreateBST(TNODE *root, int elem)
         if( elem < root->data )
             root->left=CreateBST(root->left,elem);
         else
-            if( elem >= root->data )
+            if( elem >=root->data )
                 root->right=CreateBST(root->right,elem);
            
         return(root);
     }
 }
+
+ 
 void Postorder(TNODE *root)
 {
     if( root != NULL)
